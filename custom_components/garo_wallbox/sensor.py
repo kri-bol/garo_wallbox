@@ -121,7 +121,7 @@ class GaroMainSensor(Entity):
         return self._device.device_info
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         attrs = {}
         try:
             attrs[ATTR_MODES] = self.modes
