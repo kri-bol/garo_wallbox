@@ -47,7 +47,7 @@ class Status(Enum):
     UNKNOWN = 'UNKNOWN'
     UNAVAILABLE = 'UNAVAILABLE'
 
-MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=15)
+MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=10)
 
 class GaroDevice:
 
