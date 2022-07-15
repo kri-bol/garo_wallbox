@@ -93,23 +93,12 @@ class GaroDevice:
 
     async def _do_update(self):
         response = await self._session.request(method='GET', url=self.__get_url('status', True))
-        if response.status != 200 and not self._pre_v1_3:
-            self._pre_v1_3 = True
-            _LOGGER.info('Switching to pre v1.3.1 endpoint')
-            response = await self._session.request(method='GET', url=self.__get_url('status', True))
-
-
         response_json = await response.json()
         self._status = GaroStatus(response_json, self._status)
 
     async def async_get_info(self):
         response = await self._session.request(method='GET', url=self.__get_url('config', True))
         _LOGGER.info(f'Response {response}')
-        if response.status != 200 and not self._pre_v1_3:
-            self._pre_v1_3 = True
-            _LOGGER.info('Switching to pre v1.3.1 endpoint')
-            response = await self._session.request(method='GET', url=self.__get_url('config', True))
-
         response_json = await response.json()
         self.info = GaroDeviceInfo(response_json)
 
